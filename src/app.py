@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 import datetime
+import os
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(page_title="ED Capacity Forecast", page_icon="🏥", layout="centered")
@@ -21,9 +22,20 @@ st.markdown("""
 # --- LOAD BOTH MODELS ---
 @st.cache_resource
 def load_models():
-    # Make sure BOTH .pkl files are in the same folder!
-    tactical = joblib.load('best_ed_forecaster.pkl')
-    strategic = joblib.load('long_term_forecaster.pkl')
+    # 1. Get the directory where app.py lives (the 'src' folder)
+    SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    # 2. Go UP one level, and then DOWN into the 'models' folder
+    MODELS_DIR = os.path.join(SRC_DIR, '..', 'models')
+    
+    # 3. Stitch the full path together with the exact file names
+    tactical_path = os.path.join(MODELS_DIR, 'best_ed_forecaster.pkl')
+    strategic_path = os.path.join(MODELS_DIR, 'long_term_forecaster.pkl')
+    
+    # 4. Load the models using these bulletproof paths
+    tactical = joblib.load(tactical_path)
+    strategic = joblib.load(strategic_path)
+    
     return tactical, strategic
 
 tactical_model, strategic_model = load_models()
