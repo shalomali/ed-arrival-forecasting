@@ -41,18 +41,18 @@ def load_models():
 tactical_model, strategic_model = load_models()
 
 # --- HEADER ---
-st.title("🏥 Emergency Department Forecaster")
+st.title("Emergency Department Forecaster")
 st.markdown("Anticipate hourly patient arrival trends for resource and staffing allocation.")
 st.markdown("---")
 
 # --- HYBRID UI ROUTING (TABS) ---
-tab1, tab2 = st.tabs(["⏱️ Short-Term (Immediate Shift)", "📅 Long-Term (Strategic Planning)"])
+tab1, tab2 = st.tabs(["Short-Term (Immediate Shift)", "Long-Term (Strategic Planning)"])
 
 # ==========================================
 # TAB 1: TACTICAL (REQUIRES LAGS)
 # ==========================================
 with tab1:
-    st.write("### 🚨 Immediate Predictive Window")
+    st.write("### Immediate Predictive Window")
     st.markdown("<small style='color:#666;'>Use this for the next 0-24 hours. Highest accuracy.</small>", unsafe_allow_html=True)
     
     c1, c2 = st.columns(2)
@@ -94,7 +94,7 @@ with tab1:
 # TAB 2: STRATEGIC (CALENDAR ONLY)
 # ==========================================
 with tab2:
-    st.write("### 🔮 Future Predictive Window")
+    st.write("### Future Predictive Window")
     st.markdown("<small style='color:#666;'>Use this for dates weeks or months in advance. Based purely on historical seasonality.</small>", unsafe_allow_html=True)
     
     c5, c6 = st.columns(2)
