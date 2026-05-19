@@ -59,7 +59,7 @@ with tab1:
     with c1: target_date_1 = st.date_input("Select Date", datetime.date.today(), key="d1")
     with c2: target_time_1 = st.time_input("Select Hour", datetime.time(12, 0), key="t1")
     
-    st.write("### ⏱️ Recent Arrivals (Context)")
+    st.write("### Recent Arrivals (Context)")
     c3, c4 = st.columns(2)
     with c3:
         lag_1h = st.number_input("Past Hour", min_value=0, value=4, step=1)
